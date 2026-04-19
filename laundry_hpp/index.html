@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator HPP Laundry</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        padding: 20px;
+    }
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0 10px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #4a47a3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #4a47a3;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Kalkulator HPP Laundry</h2>
+
+    <h4>Biaya Bahan & Operasional</h4>
+    <input type="number" id="detergen" placeholder="Detergen">
+    <input type="number" id="pewangi" placeholder="Pewangi">
+    <input type="number" id="plastik" placeholder="Plastik">
+    <input type="number" id="listrik" placeholder="Listrik & Air">
+
+    <h4>Biaya Tenaga Kerja</h4>
+    <input type="number" id="gaji" placeholder="Gaji Karyawan">
+
+    <h4>Biaya Lainnya</h4>
+    <input type="number" id="sewa" placeholder="Sewa">
+    <input type="number" id="lainnya" placeholder="Biaya Lain">
+
+    <h4>Total Produksi (Kg)</h4>
+    <input type="number" id="produksi" placeholder="Total Kg per bulan">
+
+    <button onclick="hitungHPP()">Hitung HPP</button>
+
+    <div class="result" id="hasil">Rp 0 / Kg</div>
+</div>
+
+<script>
+function hitungHPP() {
+    let totalBiaya =
+        (+document.getElementById("detergen").value || 0) +
+        (+document.getElementById("pewangi").value || 0) +
+        (+document.getElementById("plastik").value || 0) +
+        (+document.getElementById("listrik").value || 0) +
+        (+document.getElementById("gaji").value || 0) +
+        (+document.getElementById("sewa").value || 0) +
+        (+document.getElementById("lainnya").value || 0);
+
+    let produksi = +document.getElementById("produksi").value || 1;
+
+    let hpp = totalBiaya / produksi;
+
+    document.getElementById("hasil").innerText =
+        "Rp " + hpp.toLocaleString("id-ID") + " / Kg";
+}
+</script>
+
+</body>
+</html>
